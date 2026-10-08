@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interaktives Chemielabor für die Kursstufe: Kinetik-Simulator der Stärkehydrolyse, DE-Rechner für Glukosesirup, animierte Luff-Schoorl-Titration und Trockenmasse-Leitfaden.">
+  <title>Interaktives Lernlabor: Glukosesirup DE ~44 | Chemie Leistungsfach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="badge">Chemie Kursstufe • Leistungsfach</span>
+        <h1>Lernlabor: Glukosesirup <span class="highlight">DE ~44</span></h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <nav class="main-nav" id="mainNav">
+          <button class="nav-btn active" data-tab="tab-startseite">🎯 Projekt & Synthese-Planung</button>
+          <button class="nav-btn is-locked" data-tab="tab-kinetik"><span class="lock-icon">🔒</span> ⏱️ Kinetik-Simulator</button>
+          <button class="nav-btn is-locked" data-tab="tab-de-rechner"><span class="lock-icon">🔒</span> 📐 DE-Rechner</button>
+          <button class="nav-btn is-locked" data-tab="tab-titration"><span class="lock-icon">🔒</span> ⚗️ Luff-Schoorl</button>
+          <button class="nav-btn is-locked" data-tab="tab-trocknung"><span class="lock-icon">🔒</span> ♨️ Trockensubstanz</button>
+        </nav>
+        <div class="header-auth-badge" id="headerAuthBadge">
+          <span class="badge-status-dot locked" id="badgeStatusDot"></span>
+          <span id="headerAuthText">Planungsphase</span>
+          <button id="btnRelockLab" class="btn-relock hidden" title="Labor wieder sperren">🔒 Sperren</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- TAB 1: PROJEKT & SYNTHESE-PLANUNG (STARTSEITE) -->
+    <section class="tab-panel active" id="tab-startseite">
+      <!-- Hero Intro -->
+      <div class="section-intro hero-intro">
+        <div class="hero-badge">🎓 Lernlabor Kursstufe • Angewandte Chemie</div>
+        <h2>Synthese von Speise-Glukosesirup <span class="highlight">DE ~44</span></h2>
+        <p class="hero-lead">Entwickelt im Team ein industrielles Syntheseverfahren zur säurekatalysierten Stärkehydrolyse. Euer Ziel: Ein lebensmitteltauglicher, vollkommen entsalzter Konfiseur-Sirup mit exaktem Dextrose-Äquivalent (DE ≈ 42–46).</p>
+      </div>
+
+      <!-- TEIL 1: INTERAKTIVES PROJEKT-DOSSIER -->
+      <div class="dossier-grid">
+        <!-- Card 1: Industrielles Briefing -->
+        <div class="card dossier-card highlight-card">
+          <div class="card-header">
+            <h3>🏭 Das Industrie-Briefing: Glukosesirup DE ~44</h3>
+            <span class="status-pill status-cyan">Prozessziel</span>
+          </div>
+          <p>In der Lebensmittelindustrie ist Glukosesirup mit einem <strong>Dextrose-Äquivalent von 42–46 (DE ~44)</strong> der wichtigste Allrounder (u. a. für Bonbons, Fondant, Speiseeis und Fruchtgummis). Er verhindert das Auskristallisieren von Saccharose, verleiht Glanz und Viskosität, ohne aufdringlich süß zu wirken.</p>
+          <div class="dossier-metrics">
+            <div class="metric-item">
+              <span class="m-label">Ziel-DE</span>
+              <span class="m-val cyan">42 – 46</span>
+              <span class="m-sub">Mittlerer Hydrolysegrad</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">Zucker-Spektrum</span>
+              <span class="m-val amber">≈ 19 % Glc, 14 % Mal</span>
+              <span class="m-sub">+ 11 % DP3, 56 % Oligo</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">Ziel-Konsistenz</span>
+              <span class="m-val emerald">55 – 60 °Brix</span>
+              <span class="m-sub">Kalt viskos & lagerfähig</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lebensmittelanforderung & Kirchhoff-Verfahren -->
+        <div class="card dossier-card">
+          <div class="card-header">
+            <h3>🍯 Lebensmittelqualität & Kirchhoff-Prinzip</h3>
+            <span class="status-pill status-emerald">Reinheit</span>
+          </div>
+          <p>Ein echter Lebensmittelsirup darf weder Restsäure noch gelöste Fremdsalze enthalten. 1811 entdeckte Gottlieb Kirchhoff, dass Stärke durch Säurekatalyse gespalten werden kann – doch der Clou liegt in der <strong>restlosen Fällungsentsalzung</strong>:</p>
+          <div class="spec-list">
+            <div class="spec-item">
+              <span class="spec-icon">🧂</span>
+              <div>
+                <strong>Restlose Entsalzung (Kein Kochsalz!):</strong>
+                <span>Salzsäure (HCl) neutralisiert mit Natronlauge (NaOH) würde lösliches Speisesalz (NaCl) hinterlassen – der Sirup würde salzig schmecken. Es muss ein unlösliches Fällungsprodukt gebildet und abfiltriert werden.</span>
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-icon">✨</span>
+              <div>
+                <strong>Farbkontrolle & Schonsieden:</strong>
+                <span>Keine Karamellisierung oder HMF-Bildung (Hydroxymethylfurfural) durch Überhitzung. Schonendes Voreindicken bei maximal 75–80 °C.</span>
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-icon">📜</span>
+              <div>
+                <strong>Amtliche Referenzanalytik:</strong>
+                <span>Die maßanalytische Validierung erfolgt streng nach der europäischen Referenznorm <strong>VO (EG) Nr. 152/2009</strong> (Luff-Schoorl-Kupfertitration).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEIL 2: SCHÜLER-SCAFFOLDING (DIE 4 PLANUNGSBLÖCKE) -->
+      <div class="scaffolding-section">
+        <div class="section-badge-bar">
+          <span class="badge-accent">📋 Schüler-Scaffolding</span>
+          <h3>Leitfragen für eure Syntheseplanung (Laborjournal)</h3>
+          <p>Bevor ihr ins Labor geht oder die Simulatoren nutzt, müsst ihr im Team euer Versuchsdesign im physischen Laborjournal ausarbeiten und begründen.</p>
+        </div>
+
+        <div class="scaffolding-grid">
+          <!-- Block 1 -->
+          <div class="card scaffold-card">
+            <div class="scaffold-num">1</div>
+            <div class="scaffold-content">
+              <h4>⚗️ Katalysator & Konzentration</h4>
+              <ul class="scaffold-questions">
+                <li><strong>Welche Säure setzt ihr ein?</strong> In welcher Konzentration? <em>(Empfehlung: verdünnte Schwefelsäure H₂SO₄ mit c = 0,25–0,50 mol/L)</em></li>
+                <li><strong>Warum ist Schwefelsäure (H₂SO₄)</strong> in Kombination mit einer anschließenden Fällung Salzsäure (HCl) überlegen, wenn ein Speisesirup hergestellt werden soll? <em>(Stichwort: Trennbarkeit der Neutralisationssalze)</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="card scaffold-card">
+            <div class="scaffold-num">2</div>
+            <div class="scaffold-content">
+              <h4>🔥 Temperatur & Durchmischung</h4>
+              <ul class="scaffold-questions">
+                <li><strong>Bei welcher Temperatur</strong> soll die Hydrolysereaktion ablaufen? (Wasserbad vs. Rückflusskühler bei Siedehitze).</li>
+                <li><strong>Warum ist intensives Rühren</strong> vom ersten Moment an entscheidend? <em>(Gefahr von Verkleisterungs-Klumpenbildung und partiellem Anbrennen am Kolbenboden).</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 3 -->
+          <div class="card scaffold-card">
+            <div class="scaffold-num">3</div>
+            <div class="scaffold-content">
+              <h4>🛑 Reaktionsstopp & Entsalzung</h4>
+              <ul class="scaffold-questions">
+                <li><strong>Wie stoppt ihr die Reaktion?</strong> Wie entfernt ihr den Katalysator vollständig aus dem Produkt? <em>(Stichwort: Fällungsneutralisation mit Kalkmilch Ca(OH)₂-Suspension oder Calciumcarbonat CaCO₃ auf pH ≈ 6,0–6,5 unter Bildung von unlöslichem Gips CaSO₄ · 2 H₂O↓ und anschließender Filtration).</em></li>
+                <li><strong>Geringe Löslichkeit beachten:</strong> Warum lässt sich Calciumhydroxid wegen seiner geringen Löslichkeit (L ≈ 1,7 g/L) <strong>nicht</strong> als 1 M Lösung ansetzen und wie berechnet ihr die exakte Feststoff-Einwaage für euer Ansatzvolumen?</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Block 4 -->
+          <div class="card scaffold-card">
+            <div class="scaffold-num">4</div>
+            <div class="scaffold-content">
+              <h4>🔬 In-Prozess-Monitoring</h4>
+              <ul class="scaffold-questions">
+                <li><strong>Wie könnt ihr während des Kochens</strong> im 10-Minuten-Takt schnell prüfen, wie weit der Abbau ist?</li>
+                <li><strong>Iodprobe:</strong> Was bedeutet der Farbumschlag auf der Tüpfelplatte von Tiefblau (Stärke) über Rotviolett/Braun (Erythrodextrine) nach Gelb/Braun (Achroodextrine/Maltose)?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEIL 3: PASSWORT-GATE -->
+      <div class="card unlock-card" id="passwordGateSection">
+        <div class="unlock-header">
+          <div class="unlock-icon-wrap">
+            <span class="unlock-icon">🔐</span>
+          </div>
+          <div>
+            <h3>Planung abgeschlossen? Virtuelles Labor freischalten</h3>
+            <p>Besprecht euren fertigen Syntheseplan im Team und lasst ihn von der Lehrkraft freigeben. Nach erfolgreicher Genehmigung erhaltet ihr das Passwort, um die virtuellen Labore, den Kinetik-Simulator und den DE-Rechner freizuschalten.</p>
+          </div>
+        </div>
+
+        <form class="unlock-form" id="unlockForm" onsubmit="return false;">
+          <div class="input-wrap">
+            <input type="password" id="inputLabPassword" placeholder="Passwort der Lehrkraft eingeben..." autocomplete="off">
+            <button type="submit" id="btnSubmitPassword" class="btn-primary">Labor freischalten 🔓</button>
+          </div>
+          <div id="unlockFeedback" class="unlock-feedback"></div>
+        </form>
+
+        <div class="locked-preview-notice">
+          <span>Geschützte Module:</span>
+          <span class="tag">⏱️ Kinetik-Simulator</span>
+          <span class="tag">📐 DE-Rechner</span>
+          <span class="tag">⚗️ Luff-Schoorl Titration</span>
+          <span class="tag">♨️ Trockensubstanz (VO EG 152/2009)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: KINETIK-SIMULATOR -->
+    <section class="tab-panel" id="tab-kinetik">
+      <div class="section-intro">
+        <h2>Kinetischer Hydrolyse-Simulator</h2>
+        <p>Erkunde die säurekatalysierte Spaltung von nativer Stärke. Simuliere Reaktionszeit, Säurekonzentration und Temperatur, um das Verhalten der Iodprobe und den Zuwachs des Dextrose-Äquivalents (DE) zu verstehen.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Control Panel -->
+        <div class="card control-card">
+          <div class="card-header">
+            <h3>⚙️ Reaktionsparameter</h3>
+            <button class="btn-subtle" id="btnResetKinetics">Zurücksetzen</button>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="sliderTime">Kochzeit (t):</label>
+              <span class="value-display" id="valTime">45 Min.</span>
+            </div>
+            <input type="range" id="sliderTime" min="0" max="90" step="1" value="45">
+            <div class="slider-marks">
+              <span>0 (Stärke)</span>
+              <span>20</span>
+              <span class="target-mark">45 (Ziel DE ~44)</span>
+              <span>70</span>
+              <span>90 (Glukose)</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="sliderH2so4">Schwefelsäure-Konzentration c(H₂SO₄):</label>
+              <span class="value-display" id="valH2so4">0.25 mol/L</span>
+            </div>
+            <input type="range" id="sliderH2so4" min="0.05" max="0.50" step="0.05" value="0.25">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="sliderTemp">Reaktionstemperatur (T):</label>
+              <span class="value-display" id="valTemp">100 °C (Sieden)</span>
+            </div>
+            <input type="range" id="sliderTemp" min="80" max="100" step="1" value="100">
+          </div>
+
+          <div class="reaction-stop-box">
+            <h4>🛑 Reaktionsstopp & Gips-Fällung</h4>
+            <p>Um die Hydrolyse einzufrieren und das Neutralsalz restlos abzutrennen, wird mit einer frisch angerührten Kalkmilch-Suspension neutralisiert:</p>
+            <div class="stop-calc">
+              <span>Benötigte Einwaage Ca(OH)₂ (100 mL Ansatz):</span>
+              <strong id="caohNeeded">1.85 g</strong>
+            </div>
+            <div class="stop-details" style="font-size:0.82rem; color:var(--text-muted); margin:-0.3rem 0 0.6rem 0.2rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.4rem;">
+              <span>Stoffmenge: <code id="caohMoles" style="color:var(--text-light); font-family:var(--font-mono);">0.025 mol</code></span>
+              <span>Als Suspension: <span id="caohSuspDesc">in ca. 25 mL H₂O frisch suspendieren</span></span>
+            </div>
+            <p class="subtext-calc" id="gypsumYield" style="font-size:0.85rem; color:var(--text-muted); margin:0.4rem 0;">Fällt ca. 4.3 g weißen Gips (CaSO₄ · 2 H₂O↓) aus, der per Nutsche abfiltriert wird.</p>
+            <button class="btn-primary" id="btnSimulateStop">Reaktionsstopp auslösen</button>
+          </div>
+        </div>
+
+        <!-- Simulation Visualization -->
+        <div class="card visual-card">
+          <div class="card-header">
+            <h3>🔬 Reaktor-Zustand & In-Prozess-Analytik</h3>
+            <span class="status-pill" id="deStatusBadge">Zielbereich</span>
+          </div>
+
+          <!-- Gauge / DE Display -->
+          <div class="de-metric-display">
+            <div class="metric-number">
+              <span class="de-value" id="displayDeValue">43.8</span>
+              <span class="de-unit">DE</span>
+            </div>
+            <div class="de-progress-bar-container">
+              <div class="de-progress-bar" id="deProgressBar" style="width: 43.8%;"></div>
+              <div class="de-target-zone" title="Industrieller Zielbereich DE 40-48"></div>
+            </div>
+            <div class="target-legend">
+              <span>0 (Stärke)</span>
+              <span class="target-tag">🎯 Ziel: DE 42–46</span>
+              <span>100 (Reine Glukose)</span>
+            </div>
+          </div>
+
+          <!-- Virtual Tube / Iodine Test -->
+          <div class="tube-section single-item">
+            <div class="tube-container">
+              <div class="test-tube">
+                <div class="tube-liquid" id="tubeLiquid"></div>
+                <div class="meniscus"></div>
+              </div>
+              <div class="tube-label">
+                <strong>Iod-Stärke-Reaktion (In-Prozess-Monitoring)</strong>
+                <span id="iodineText">Reines Gelb (Iod-Eigenfarbe, NEGATIV)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Molecular Composition Stack -->
+          <div class="composition-section">
+            <h4>Molekulare Zusammensetzung des Hydrolysats:</h4>
+            <div class="stacked-bar">
+              <div class="bar-segment seg-oligo" id="segOligo" style="width: 56%;" title="Oligosaccharide (DP > 3)">56% Oligos</div>
+              <div class="bar-segment seg-tri" id="segTri" style="width: 11%;" title="Maltotriose">11% DP3</div>
+              <div class="bar-segment seg-mal" id="segMal" style="width: 14%;" title="Maltose">14% Mal</div>
+              <div class="bar-segment seg-glc" id="segGlc" style="width: 19%;" title="D-Glucose">19% Glc</div>
+            </div>
+            <div class="comp-legend">
+              <span class="dot dot-oligo"></span> Oligosaccharide (Viskosität / Kristallisationshemmung)
+              <span class="dot dot-tri"></span> Maltotriose
+              <span class="dot dot-mal"></span> Maltose
+              <span class="dot dot-glc"></span> D-Glucose (Süßkraft)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: DE-RECHNER -->
+    <section class="tab-panel" id="tab-de-rechner">
+      <div class="section-intro">
+        <h2>Interaktiver DE-Auswertungsrechner</h2>
+        <p>Gib hier deine realen Labordaten der Luff-Schoorl-Titration und der Trockensubstanzmessung ein. Das Tool berechnet automatisch den exakten DE-Wert mit vollständigem Rechenweg für dein Protokoll.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Input Form -->
+        <div class="card">
+          <div class="card-header">
+            <h3>📝 Labor-Messwerte eingeben</h3>
+          </div>
+
+          <form id="deCalcForm" onsubmit="return false;">
+            <div class="form-section">
+              <h4>1. Einwaage & Verdünnung</h4>
+              <div class="input-grid">
+                <div class="form-field">
+                  <label for="inSirupMass">Einwaage Sirup (m_Sirup):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inSirupMass" step="0.001" value="2.150">
+                    <span class="unit">g</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="inVol1">Kolben 1 (Lösen):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inVol1" value="100">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="inAliquot1">Entnahme aus Kolben 1:</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inAliquot1" value="10.0">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="inVol2">Kolben 2 (Verdünnen):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inVol2" value="100">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="inTitrationVol">Zur Titration eingesetzt:</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inTitrationVol" value="25.0">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h4>2. Trockensubstanz-Ermittlung (Wähle Methode)</h4>
+              <div class="method-toggle">
+                <button type="button" class="btn-toggle active" id="btnToggleBrix">Refraktometer (°Brix)</button>
+                <button type="button" class="btn-toggle" id="btnToggleGravi">Trockenschrank (Gravimetrie)</button>
+              </div>
+
+              <!-- Brix Input -->
+              <div id="brixInputSection" class="input-subgroup">
+                <div class="form-field">
+                  <label for="inBrix">Gemessener Brechungsindex (°Brix):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inBrix" step="0.1" value="58.0">
+                    <span class="unit">°Brix</span>
+                  </div>
+                  <small class="helper-text">1 °Brix entspricht 1 g Trockensubstanz pro 100 g Sirup.</small>
+                </div>
+              </div>
+
+              <!-- Gravimetry Input (Initially Hidden) -->
+              <div id="graviInputSection" class="input-subgroup hidden">
+                <div class="input-grid">
+                  <div class="form-field">
+                    <label for="inM0">Leertara + Sand (m₀):</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="inM0" step="0.0001" value="24.1205">
+                      <span class="unit">g</span>
+                    </div>
+                  </div>
+                  <div class="form-field">
+                    <label for="inM1">Schale + Sand + Sirup (m₁):</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="inM1" step="0.0001" value="26.2705">
+                      <span class="unit">g</span>
+                    </div>
+                  </div>
+                  <div class="form-field">
+                    <label for="inM2">Getrocknet (102 °C, m₂):</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="inM2" step="0.0001" value="25.3675">
+                      <span class="unit">g</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h4>3. Luff-Schoorl Titrationsvolumina (0,1 M Thiosulfat)</h4>
+              <div class="input-grid">
+                <div class="form-field">
+                  <label for="inVBlind">Verbrauch Blindwert (V_Blind):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inVBlind" step="0.05" value="25.05">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="inVProbe">Verbrauch Probe (V_Probe):</label>
+                  <div class="input-with-unit">
+                    <input type="number" id="inVProbe" step="0.05" value="13.65">
+                    <span class="unit">mL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-primary full-width" id="btnCalculateDe">DE-Wert berechnen</button>
+          </form>
+        </div>
+
+        <!-- Output / Step-by-Step Breakdown -->
+        <div class="card result-card">
+          <div class="card-header">
+            <h3>📊 Auswertungsergebnis</h3>
+            <span class="badge badge-success" id="calcBadge">Erfolgreich</span>
+          </div>
+
+          <div class="de-final-box">
+            <span>Errechnetes Dextrose-Äquivalent:</span>
+            <div class="big-de" id="resDeValue">43.9</div>
+            <div class="de-assessment" id="resDeText">🎯 Hervorragende Punktlandung im industriellen Standardbereich für Konfiseursirup (DE 42–46)!</div>
+          </div>
+
+          <div class="math-breakdown">
+            <h4>Stöchiometrischer Rechenweg:</h4>
+            <div class="step-card">
+              <span class="step-num">Schritt 1</span>
+              <p>Verbrauchsdifferenz ermitteln:</p>
+              <code>ΔV = V_Blind - V_Probe = <span id="mathDeltaV">25.05 - 13.65 = 11.40</span> mL</code>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">Schritt 2</span>
+              <p>Glucosemasse aus Luff-Schoorl-Tabelle interpolieren:</p>
+              <code>m(Glucose) = <span id="mathGlucose">28.68</span> mg</code>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num">Schritt 3</span>
+              <p>Im Titrationsansatz enthaltene Trockensubstanz:</p>
+              <code>m(TS) = m(Aliquot) · w(TS) = <span id="mathTs">53.75 mg · 0.580 = 31.18</span> mg</code>
+            </div>
+
+            <div class="step-card highlight-step">
+              <span class="step-num">Schritt 4</span>
+              <p>DE-Formel anwenden:</p>
+              <code>DE = (m_Glc / m_TS) · 100 = (<span id="mathDeFormula">28.68 / 31.18</span>) · 100 = <strong id="mathFinal">43.87</strong></code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: LUFF-SCHOORL ANALYTIK -->
+    <section class="tab-panel" id="tab-titration">
+      <div class="section-intro">
+        <h2>Die Luff-Schoorl-Methode & Iodometrie</h2>
+        <p>Verstehe die dreistufige Redoxreaktion zur quantitativen Bestimmung reduzierender Zucker nach amtlicher Methode (§ 64 LFGB).</p>
+      </div>
+
+      <!-- Amtliche EU-Verordnung Box (Ausklappbar) -->
+      <details class="official-regulation-box">
+        <summary>
+          <span class="reg-badge">🇪🇺 Amtliche Prüfmethode</span>
+          <strong>VO (EG) Nr. 152/2009 • Anhang III, Teil I: Bestimmung des Zuckergehalts nach Luff-Schoorl</strong>
+          <span class="toggle-indicator">▼ Amtlichen Text anzeigen</span>
+        </summary>
+        <div class="reg-content">
+          <p><strong>Rechtlicher Rahmen:</strong> Die Maßanalyse reduzierender Zucker wird im Projekt nicht frei entworfen, sondern exakt nach der amtlichen Methode der Europäischen Kommission zur Untersuchung von Futtermitteln (VO (EG) Nr. 152/2009, ABl. L 54/58 ff.) durchgeführt.</p>
+          <div class="reg-columns">
+            <div>
+              <h5>Auszug: Durchführung der Reduktion (§ 5.4):</h5>
+              <blockquote>
+                „In einen Erlenmeyerkolben werden 25 ml Reagenz nach Luff-Schoorl pipettiert und anschließend genau 25 ml der Zuckerlösung hinzugefügt. Nach Zugabe von 2 Körnchen Bimsstein wird unter Schütteln mit der Hand so erhitzt, dass die Flüssigkeit in etwa 2 min zum Sieden kommt. [...] Von diesem Augenblick an wird der Kolben genau 10 min lang sieden gelassen. Anschließend wird er sofort in kaltem Wasser abgekühlt [...].“
+              </blockquote>
+            </div>
+            <div>
+              <h5>Auszug: Iodometrische Rücktitration (§ 5.4 Abs. 2):</h5>
+              <blockquote>
+                „Der Flüssigkeit werden 10 ml Kaliumiodidlösung (30 %) und unmittelbar danach vorsichtig 25 ml Schwefelsäure (3 mol/l) zugegeben. Dann wird mit Natriumthiosulfatlösung (0,1 mol/l) zunächst bis zum Auftreten einer mattgelben Farbe titriert und nach Zugabe von Stärkelösung als Indikator die Titration zu Ende geführt.“
+              </blockquote>
+            </div>
+          </div>
+          <p class="reg-note"><em>Amtliche Auswertung:</em> Der Glukosegehalt wird der amtlichen Schoorl-Wertetabelle (Anhang III Teil I.6) anhand der Differenz ΔV = V_Blind – V_Probe entnommen.</p>
+        </div>
+      </details>
+
+      <div class="stepper-container card">
+        <div class="step-nav">
+          <button class="step-nav-btn active" data-step="1">1. Reduktion Cu²⁺ → Cu₂O</button>
+          <button class="step-nav-btn" data-step="2">2. Iodid-Oxidation → I₂</button>
+          <button class="step-nav-btn" data-step="3">3. Iodometrie mit Thiosulfat</button>
+        </div>
+
+        <div class="step-content active" id="rxStep1">
+          <div class="rx-grid">
+            <div class="rx-desc">
+              <h3>Schritt 1: Zucker-Oxidation im schwach Alkalischen</h3>
+              <p>Die reduzierenden Zucker (Aldosen und Halbacetale von Oligosacchariden) reduzieren einen Teil des im Überschuss vorgelegten Kupfers bei genau <strong>10 Minuten Sieden unter Rückfluss</strong> zu rotem Kupfer(I)-oxid:</p>
+              <div class="equation-box">
+                <code>R-CHO + 2 Cu²⁺ + 4 OH⁻ ──[Δ, 10 min]──> R-COOH + Cu₂O↓ (rot) + 2 H₂O</code>
+              </div>
+              <ul class="bullet-list">
+                <li><strong>Reagenz:</strong> Luff-Lösung (Kupfersulfat, Citronensäure, Natriumcarbonat, pH ~ 9.3).</li>
+                <li><strong>Zeitkritisch:</strong> Die Reduktion ist keine stöchiometrische Gleichgewichtsreaktion, sondern zeitabhängig. Exakt 10.0 Minuten kochen!</li>
+              </ul>
+            </div>
+            <div class="rx-visual">
+              <div class="flask-sim red-ppt">
+                <div class="flask-neck"></div>
+                <div class="flask-body">
+                  <div class="ppt-particles"></div>
+                  <span>Cu₂O (roter Niederschlag)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-content" id="rxStep2">
+          <div class="rx-grid">
+            <div class="rx-desc">
+              <h3>Schritt 2: Ansäuern & Freisetzung von elementarem Iod</h3>
+              <p>Nach dem Abkühlen wird die Lösung mit Kaliumiodid (KI) und verdünnter Schwefelsäure versetzt. Die <strong>überschüssigen, nicht reduzierten Cu²⁺-Ionen</strong> oxidieren Iodid zu braunem Iod:</p>
+              <div class="equation-box">
+                <code>2 Cu²⁺ + 4 I⁻ ──────> 2 CuI↓ (weiß) + I₂ (braun)</code>
+              </div>
+              <ul class="bullet-list">
+                <li><strong>Redoxpaar 1:</strong> Cu²⁺ + e⁻ → Cu⁺ (E° = +0,16 V, fällt als extrem schwerlösliches CuI aus).</li>
+                <li><strong>Redoxpaar 2:</strong> 2 I⁻ → I₂ + 2 e⁻ (E° = +0,54 V).</li>
+                <li><strong>Beobachtung:</strong> Die tiefblaue Lösung schäumt durch CO₂-Entwicklung auf und färbt sich dunkelbraun.</li>
+              </ul>
+            </div>
+            <div class="rx-visual">
+              <div class="flask-sim brown-iodine">
+                <div class="flask-neck"></div>
+                <div class="flask-body">
+                  <span>I₂ + CuI (dunkelbraun)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-content" id="rxStep3">
+          <div class="rx-grid">
+            <div class="rx-desc">
+              <h3>Schritt 3: Iodometrie & Der Farbumschlag</h3>
+              <p>Das freigesetzte Iod wird sofort mit Natriumthiosulfat (0,1 mol/L) titriert. Kurz vor dem Endpunkt wird Stärkelösung zugegeben:</p>
+              <div class="equation-box">
+                <code>I₂ + 2 S₂O₃²⁻ ──────> 2 I⁻ (farblos) + S₄O₆²⁻ (Tetrathionat)</code>
+              </div>
+              <div class="color-change-bar">
+                <div class="c-phase c1">Dunkelbraun (I₂)</div>
+                <div class="c-phase c2">Strohgelb (vor Indikator)</div>
+                <div class="c-phase c3">Tiefblau (+ Stärke)</div>
+                <div class="c-phase c4">Milchig-Weiß (Endpunkt / CuI)</div>
+              </div>
+              <p><small>Der Umschlagspunkt ist erreicht, wenn das Blau schlagartig verschwindet und eine cremefarbene CuI-Suspension bleibt.</small></p>
+            </div>
+            <div class="rx-visual">
+              <div class="flask-sim endpoint-white">
+                <div class="flask-neck"></div>
+                <div class="flask-body">
+                  <span>Schlagartiger Umschlag nach Weiß!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: TROCKENSUBSTANZ -->
+    <section class="tab-panel" id="tab-trocknung">
+      <div class="section-intro">
+        <h2>Trockensubstanz: Refraktometer vs. Trockenschrank</h2>
+        <p>Der DE-Wert teilt reduzierende Zucker durch den reinen Trockenmasseanteil. Erfahre, wie man Sirupe ohne thermische Zersetzung trocknet.</p>
+      </div>
+
+      <!-- Amtliche EU-Verordnung Box Trockenmasse (Ausklappbar) -->
+      <details class="official-regulation-box">
+        <summary>
+          <span class="reg-badge">🇪🇺 Amtliche Prüfmethode</span>
+          <strong>VO (EG) Nr. 152/2009 • Anhang III, Teil A: Bestimmung des Feuchtigkeitsgehalts</strong>
+          <span class="toggle-indicator">▼ Amtlichen Text anzeigen</span>
+        </summary>
+        <div class="reg-content">
+          <p><strong>Rechtliche Grundlage:</strong> Referenzverfahren für Feuchtigkeit und Trockensubstanz nach VO (EG) Nr. 152/2009 (ABl. L 54/22). Bei zähflüssigen, zuckerreichen Proben gilt die spezielle Vorschrift zur Sand-Verreibung:</p>
+          <div class="reg-columns">
+            <div>
+              <h5>Auszug: Vorbereitung breiiger/flüssiger Proben (§ 4.1.3):</h5>
+              <blockquote>
+                „Etwa 25 g der Probe [...] werden entnommen, mit einer entsprechenden [...] Menge wasserfreiem Sand vermischt, bis ein homogenes Produkt entsteht.“
+              </blockquote>
+            </div>
+            <div>
+              <h5>Auszug: Trocknung bei 103 °C (§ 4.2.1):</h5>
+              <blockquote>
+                „Das Gefäß wird ohne Deckel in den auf 103 °C vorgeheizten Trockenschrank gestellt. [...] Es wird getrocknet, im Exsikkator auf Umgebungstemperatur abgekühlt und gewogen.“
+              </blockquote>
+            </div>
+          </div>
+          <div class="reg-formula-card">
+            <code>Trockensubstanz TS (%) = 100 - [(m - m₀) / m] · 100</code>
+            <p>wobei <code>m</code> = Einwaage der Probe und <code>m₀</code> = Trockenmasse. Im Schulversuch wird das Handrefraktometer (°Brix) als schnelles Sekundärverfahren gegen diese gravimetrische Referenz kalibriert.</p>
+          </div>
+        </div>
+      </details>
+
+      <div class="grid-2col">
+        <!-- Sand Method Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>♨️ Trockenschrank: Die „Seesand-Methode“</h3>
+            <span class="badge badge-warning">Max. 103 °C!</span>
+          </div>
+          <div class="warning-callout">
+            <strong>⚠️ Zersetzungsgefahr bei Zucker:</strong><br>
+            Wird der Trockenschrank über 105 °C betrieben, setzt Karamellisierung, Maillard-Reaktion und Wasserabspaltung (HMF) ein. Das führt zu scheinbar zu hohem Masseverlust und verfälscht den DE-Wert drastisch!
+          </div>
+
+          <div class="seesand-graphic">
+            <div class="sand-dish">
+              <div class="sand-layer">
+                <span class="sand-grain"></span><span class="sand-grain"></span><span class="sand-grain"></span>
+                <span class="syrup-film">Hauchdünner Sirupfilm auf Quarzkörnern</span>
+              </div>
+              <div class="glass-stirrer">Glasstab</div>
+            </div>
+          </div>
+
+          <ol class="step-guide">
+            <li><strong>Schale + Quarzsand + Glasstab einwiegen</strong> (m₀, auf 0,1 mg genau).</li>
+            <li><strong>Ca. 1.5–2.0 g Sirup auftropfen & wiegen</strong> (m₁).</li>
+            <li><strong>Mit Glasstab innig verreiben:</strong> Verhindert die gefürchtete <em>Krustenbildung</em>, die Wasser im Inneren einschließt.</li>
+            <li><strong>3–4 Stunden bei 100–103 °C trocknen</strong>, im Exsikkator kühlen, rückwiegen (m₂).</li>
+          </ol>
+        </div>
+
+        <!-- Refractometer Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>🔬 Refraktometrie (°Brix): Trockensubstanz & Eindicken</h3>
+            <span class="badge badge-info">Sekundenschnell</span>
+          </div>
+
+          <p>Das Handrefraktometer misst die Lichtbrechung der gelösten Trockensubstanz (1 °Brix ≈ 1 g gelöste Trockensubstanz pro 100 g Lösung). Es dient der schnellen Trockensubstanzbestimmung <code>w(TS)</code> für die DE-Formel sowie der In-Prozess-Kontrolle beim finalen Einkochen des Sirups (Ziel: 55–60 °Brix).</p>
+
+          <div class="atc-box">
+            <h4>🌡️ Automatische Temperaturkompensation (ATC)</h4>
+            <p>Der Brechungsindex ändert sich um ca. 0,1 °Brix pro Kelvin! Das Refraktometer muss ATC besitzen (10–30 °C).</p>
+            <p><strong>Praxis-Regel:</strong> Kochend heiße Tropfen vor dem Auftragen auf das Glasprisma immer 30 Sekunden auf einem Uhrglas abkühlen lassen, um Verdampfen zu vermeiden.</p>
+          </div>
+
+          <div class="dilution-recipe">
+            <h4>💡 Trick bei hochkonzentriertem Sirup (> 32 °Brix):</h4>
+            <p>Falls euer Refraktometer nur bis 32 °Brix reicht: Exakt 2,00 g Sirup mit 2,00 g Wasser 1:1 verdünnen, messen und Wert verdoppeln!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>Gymnasium Birklehof • Chemie Kursstufe Leistungsfach • Fachdidaktik Naturstoffe & Elektrochemie</p>
+      <p><small>Erstellt nach Bildungsplan 2016 Baden-Württemberg (Überarbeitung 2022)</small></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
